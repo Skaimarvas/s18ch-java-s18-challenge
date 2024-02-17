@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Notes:
+ * Author can has more than one books that´s why used @OneToMany annotations
+ */
 @NoArgsConstructor
 @Data
 @Entity
