@@ -1,6 +1,7 @@
 package com.example.s18ch.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,10 +25,14 @@ public class Book {
     @Column(name = "book_name" )
     private String bookName;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "author_id")
+    @JsonBackReference
     private Author author;
 
-
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    @JsonBackReference
+    private Category category;
 
 }

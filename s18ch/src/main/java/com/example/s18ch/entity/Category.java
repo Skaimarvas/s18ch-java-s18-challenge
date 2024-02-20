@@ -1,10 +1,12 @@
 package com.example.s18ch.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,6 +26,14 @@ public class Category {
     private long id;
     @Column(name = "category_name")
     private String categoryName;
+    @JsonManagedReference
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Book> books;
+
+    public void addBook(Book book) {
+        if (books == null) {
+            books = new ArrayList<>();
+        }
+        books.add(book);
+    }
 }
